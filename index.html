@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Halaman pribadi dengan informasi kontak dan galeri gambar. Temukan informasi kontak dan jelajahi gambar-gambar menarik.">
+    <meta name="keywords" content="halaman pribadi, galeri gambar, informasi kontak">
+    <title>Halaman Pribadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="https://i.pinimg.com/736x/b3/47/a8/b347a8c125bae58758e4efd82e987008.jpg" type="image/png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1b 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, .1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            animation: slideIn 1s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-name {
+            color: #f0f0f0;
+            font-size: 22px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery .large-vertical {
+            grid-column: span 1;
+            grid-row: span 2;
+            aspect-ratio: 9 / 16;
+        }
+
+        .gallery .large-horizontal {
+            grid-column: span 2;
+            aspect-ratio: 16 / 9;
+        }
+
+        .gallery .small {
+            grid-column: span 1;
+            aspect-ratio: 1 / 1;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2e2e2e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info a {
+            font-size: 24px;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            transform: scale(1.2);
+        }
+
+        .fa-envelope {
+            color: #f39c12;
+        }
+
+        .fa-phone {
+            color: #25d366;
+        }
+
+        .fa-map-marker-alt {
+            color: #e74c3c;
+        }
+
+        .fa-instagram {
+            color: #c32aa3;
+        }
+
+        .fa-facebook {
+            color: #1877f2;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333333;
+            color: #f0f0f0;
+            margin-top: auto;
+        }
+
+        a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: transparent;
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Halaman Pribadi</h1>
+        <img src="https://i.pinimg.com/736x/84/31/47/8431472089ca7a0c1834442629f7cb59.jpg"
+            alt="Foto Profil dari pengguna" class="profile-pic">
+        <div class="profile-name">Nama Anda</div>
+        <p>Selamat datang di halaman pribadi saya. Di sini Anda dapat menemukan informasi kontak saya dan menjelajahi
+            berbagai gambar yang menarik.</p>
+        <p><a href="portfolio.html">Lihat Portofolio Saya</a></p>
+        <div class="gallery">
+            <img src="https://i.pinimg.com/736x/5b/ee/33/5bee33395cabd9ffdbf1942b493426b9.jpg"
+                alt="Pemandangan alam vertikal besar" class="large-vertical" loading="lazy">
+            <img src="https://i.pinimg.com/736x/62/33/fe/6233fecf37f3a9575dcc78703ec27c62.jpg"
+                alt="Gambar horizontal besar dari pemandangan kota" class="large-horizontal" loading="lazy">
+            <img src="https://i.pinimg.com/736x/b3/47/a8/b347a8c125bae58758e4efd82e987008.jpg"
+                alt="Gambar kecil dengan pola abstrak" class="small" loading="lazy">
+            <img src="https://i.pinimg.com/564x/9a/9b/7c/9a9b7c60f5435225634088e62d534110.jpg"
+                alt="Gambar kecil dari pemandangan alam" class="small" loading="lazy">
+        </div>
+        <div class="contact-info">
+            <a href="mailto:levi4ckerm4n1@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/6283827521027" title="Telepon"><i class="fas fa-phone"></i></a>
+            <a href="https://www.google.com/maps?q=Jl.+Contoh+No.+123,+Kota,+Negara" title="Alamat"><i
+                    class="fas fa-map-marker-alt"></i></a>
+            <a href="https://www.instagram.com/dfddf" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/dfddf" title="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Halaman Pribadi Anda</p>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Gambar Besar">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src;
+                modal.classList.add('show');
+            });
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

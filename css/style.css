@@ -1,0 +1,543 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d1a;
+  /* background: linear-gradient(135deg, #0d0d1a 0%, #2c003e 100%); */
+  color: #e0e0e0;
+  overflow-x: hidden; /* Menyembunyikan scroll horizontal */
+}
+.container {
+  max-width: 100%; /* Memastikan kontainer tidak melebihi lebar viewport */
+  padding: 0;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+/* Navbar Customization */
+#navbar {
+  transition: top 0.3s;
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+}
+
+.navbar-brand {
+  color: #e0e0e0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-link {
+  color: #e0e0e0;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #d4af37;
+}
+
+.navbar .dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+}
+
+.navbar .dropdown-item {
+  color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #d4af37;
+}
+
+.about,
+#organization {
+  /* padding: 40px; */
+  background-color: transparent; /* Tidak ada warna latar belakang */
+  margin-top: 70px; /* Memberikan jarak di atas konten untuk menghindari terhalang navbar */
+}
+.container .back-1 {
+  background: linear-gradient(to bottom, #0d0d1a 0%, #08007c 50%, #2c003e 100%);
+}
+
+.biodata-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px; /* Padding di sekitar konten biodata */
+}
+
+.biodata-text {
+  padding: 20px;
+}
+
+.biodata-content img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #d4af37;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-right: 20px; /* Jarak antara gambar dan teks */
+}
+
+.biodata-text h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.biodata-text p {
+  color: #e0e0e0;
+}
+.biodata-content img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 767px) {
+  .biodata-content {
+    flex-direction: column; /* Gambar di atas teks pada layar kecil */
+    text-align: center;
+    padding: 20px;
+  }
+
+  .biodata-text {
+    padding-top: 0;
+  }
+}
+/* Styling untuk Konten Who Am I */
+.who-am-i {
+  margin-top: 20px; /* Jarak dari konten sebelumnya */
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.who-am-i-photo {
+  text-align: center;
+}
+
+.who-am-i-photo img {
+  width: 100%; /* Menyesuaikan lebar gambar dengan container */
+  max-width: 300px; /* Ukuran maksimum gambar */
+  height: auto; /* Menjaga rasio aspek gambar */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.who-am-i-text {
+  background: rgba(255, 255, 255, 0.1); /* Latar belakang transparan */
+  border-radius: 8px; /* Membuat sudut membulat */
+  padding: 20px;
+  color: #e0e0e0; /* Warna teks */
+  text-align: left;
+}
+
+.who-am-i-text h3 {
+  font-family: "Playfair Display", serif;
+  color: #f8f9fa;
+  margin-bottom: 15px;
+}
+
+.who-am-i-text p {
+  color: #e0e0e0;
+}
+.social-icons {
+  margin-top: 20px; /* Jarak antara teks dan ikon */
+}
+
+.social-icons a {
+  color: #e0e0e0; /* Warna ikon */
+  font-size: 1.5rem; /* Ukuran ikon */
+  margin: 0 15px; /* Jarak antar ikon */
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #d4af37; /* Warna ikon saat hover */
+}
+
+@media (max-width: 768px) {
+  .who-am-i {
+    flex-direction: column-reverse; /* Posisi gambar di bawah teks pada layar kecil */
+  }
+
+  .who-am-i-text {
+    margin-top: 20px; /* Jarak antara teks dan gambar pada layar kecil */
+  }
+
+  .who-am-i-photo {
+    text-align: center; /* Pusatkan gambar saat di layar kecil */
+  }
+
+  .social-icons {
+    text-align: center; /* Pusatkan ikon saat di layar kecil */
+  }
+}
+.carousel-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card {
+  background: linear-gradient(
+    135deg,
+    #1a1a2e 0%,
+    #2c003e 100%
+  ); /* Gradient latar belakang card */
+  border: 1px solid #444; /* Border tipis */
+  border-radius: 12px; /* Membuat sudut card membulat */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Shadow lembut */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi animasi */
+}
+.card-body {
+  padding: 20px;
+}
+.card-title {
+  font-family: "Playfair Display", serif;
+  color: #f8f9fa; /* Warna teks card */
+  font-size: 1.5rem; /* Ukuran font judul lebih besar */
+  margin-bottom: 0.5rem;
+}
+.card-text {
+  color: #e0e0e0; /* Warna teks card */
+}
+.btn-outline-light {
+  color: #f8f9fa; /* Warna teks tombol */
+  border-color: #f8f9fa; /* Warna border tombol */
+}
+.btn-outline-light:hover {
+  background-color: #f8f9fa; /* Warna latar belakang tombol saat hover */
+  color: #1a1a2e; /* Warna teks tombol saat hover */
+}
+
+a {
+  color: #d4af37; /* Emas untuk link */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Styling untuk Konten Riwayat Organisasi */
+.section-title {
+  font-family: "Playfair Display", serif;
+  color: #f8f9fa; /* Warna teks judul */
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center; /* Judul rata kiri */
+}
+
+.section-description {
+  color: #e0e0e0; /* Warna teks deskripsi */
+  font-size: 1rem;
+  margin-bottom: 20px; /* Jarak antara deskripsi dan item */
+  text-align: center; /* Deskripsi rata kiri */
+}
+
+.organization-list {
+  margin-top: 20px;
+}
+
+.organization-item {
+  background: #1a1a2e; /* Warna latar belakang item */
+  border: 1px solid #444; /* Border item */
+  border-radius: 8px; /* Sudut item membulat */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow lembut */
+  padding: 20px;
+  margin-bottom: 20px; /* Jarak antar item */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transisi animasi */
+  max-width: 800px; /* Lebar maksimum item */
+  margin-left: auto; /* Margin kiri otomatis */
+  margin-right: auto; /* Margin kanan otomatis */
+}
+
+.organization-content {
+  display: flex;
+  align-items: center;
+}
+
+.organization-image {
+  flex: 1;
+  margin-right: 20px; /* Jarak antara gambar dan teks */
+}
+
+.organization-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.organization-text {
+  flex: 2;
+}
+
+.organization-role {
+  font-family: "Playfair Display", serif;
+  color: #f8f9fa; /* Warna teks jabatan */
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.organization-name {
+  color: #e0e0e0; /* Warna teks nama organisasi */
+  font-size: 1rem;
+  margin: 0;
+}
+
+.organization-text p {
+  color: #e0e0e0; /* Warna teks deskripsi */
+  margin: 0;
+}
+
+/* Atur styling untuk reverse */
+.organization-item.reverse .organization-content {
+  flex-direction: row-reverse;
+}
+
+.organization-item:hover {
+  background-color: #282c36; /* Warna latar belakang lebih gelap saat hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Shadow lebih besar saat hover */
+}
+/* Styling untuk Judul Skills */
+.skills-title {
+  text-align: center; /* Pusatkan judul */
+  color: #f8f9fa; /* Warna teks judul */
+  margin-bottom: 10px; /* Jarak antara judul dan deskripsi */
+  font-family: "Playfair Display", serif;
+  font-size: 2rem; /* Ukuran font judul */
+}
+
+/* Styling untuk Deskripsi Singkat */
+.skills-description {
+  text-align: center; /* Pusatkan deskripsi */
+  color: #e0e0e0; /* Warna teks deskripsi */
+  margin-bottom: 20px; /* Jarak antara deskripsi dan konten */
+  font-size: 1rem; /* Ukuran font deskripsi */
+}
+
+/* Styling untuk Pembungkus Skill dengan Warna Latar Belakang Lebih Gelap */
+.skills-wrapper {
+  max-width: 1200px; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+  margin: 0 auto; /* Pusatkan pembungkus secara horizontal */
+  padding: 20px; /* Tambahkan padding untuk ruang di dalam border */
+  border: 2px solid #444; /* Border di sekitar wadah */
+  background: #1e1e2f; /* Warna latar belakang yang lebih gelap */
+  border-radius: 8px; /* Sudut membulat border */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5),
+    /* Efek cekung ke dalam */ 0 0 10px #0000ff33, 0 0 15px #0066ffcc; /* Glow border effect */
+}
+
+/* Styling untuk Kontainer Skill */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap; /* Membungkus item ke baris berikutnya */
+  gap: 10px; /* Jarak antar item */
+  justify-content: center; /* Pusatkan item secara horizontal */
+}
+
+/* Styling untuk Setiap Item Skill dengan Efek Inset */
+.skill-category {
+  background: #1a1a2e; /* Warna latar belakang */
+  border: 1px solid #444; /* Border item */
+  border-radius: 8px; /* Sudut membulat */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5),
+    /* Efek cekung ke dalam */ 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow lembut */
+  color: #e0e0e0;
+  text-align: center; /* Pusatkan teks */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(25% - 10px); /* Lebar item untuk empat kolom */
+  height: 200px; /* Tinggi item tetap */
+  box-sizing: border-box; /* Menghitung padding dan border dalam lebar dan tinggi */
+}
+
+/* Efek Hover untuk .skill-category */
+.skill-category:hover {
+  box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.4),
+    /* Efek cekung pada hover */ 0 6px 12px rgba(0, 0, 0, 0.4); /* Shadow lembut pada hover */
+}
+
+/* Styling untuk Nama Skill */
+.skill-category h3 {
+  font-family: "Playfair Display", serif;
+  color: #f8f9fa;
+  margin-bottom: 10px;
+}
+
+/* Styling untuk Level Kemampuan */
+.skill-category p {
+  color: #d4af37; /* Warna level kemampuan */
+  font-size: 1rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Responsive Design untuk layar kecil */
+@media (max-width: 767px) {
+  .skills-wrapper {
+    margin: 0 15px; /* Tambahkan margin samping pada layar kecil */
+  }
+  .skill-category {
+    width: calc(50% - 10px); /* Dua kolom pada layar kecil */
+  }
+}
+
+@media (min-width: 768px) {
+  .skill-category {
+    width: calc(25% - 10px); /* Empat kolom pada layar lebih besar */
+  }
+}
+
+/* Styling untuk Footer Separator */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.separator hr {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid #fff; /* Garis tipis putih */
+  margin: 0 10px;
+}
+
+.separator .dots {
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 10px;
+}
+/* Menambahkan jarak di bawah konten sebelum footer */
+.footer-spacing {
+  margin-bottom: 50px; /* Jarak yang cukup untuk memisahkan footer dari konten sebelumnya */
+}
+
+.footer {
+  background-color: #1e1e2f;
+  color: #e0e0e0;
+  padding: 40px 20px 0;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  border-bottom: 1px solid #fff; /* Garis putih tipis */
+  padding-bottom: 20px;
+}
+
+.footer-about,
+.footer-links,
+.footer-legal,
+.footer-social {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-about h2,
+.footer-links h2,
+.footer-legal h2,
+.footer-social h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  color: #f8f9fa;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #fff; /* Garis putih tipis di bawah judul */
+  padding-bottom: 5px;
+}
+
+.footer-about p,
+.footer-links a,
+.footer-legal a {
+  color: #e0e0e0;
+  margin: 5px 0;
+  text-decoration: none;
+  display: block;
+}
+
+.footer-links ul,
+.footer-legal ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links li,
+.footer-legal li {
+  margin: 5px 0;
+}
+
+.footer-links a:hover,
+.footer-legal a:hover {
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-social .social-icon {
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.footer-social .social-icon:hover {
+  color: #d4af37;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px;
+  color: #e0e0e0;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+}
+
+.footer-bottom .heart {
+  color: #d4af37;
+}
+
+@media (max-width: 767px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
